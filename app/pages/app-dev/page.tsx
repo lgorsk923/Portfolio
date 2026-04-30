@@ -1,6 +1,9 @@
+import CardCarousel from "@/app/components/card-carousel";
 import { ItemCard } from "@/app/components/portfolio-item-card";
-
+import { Card } from "@/components/ui/card";
+import { AppDevExperience } from "@/lib/AppDevExperince";
 export default function Page() {
+    let experienceArray = AppDevExperience
     return (
         <div className="flex flex-col flex-1 bg-cyan-50 bg-cover bg-center bg-no-repeat">
             <main className="flex flex-col flex-1 sm:justify-start">
@@ -25,15 +28,7 @@ export default function Page() {
                     </div>
                     <h1 className='text-2xl px-8 [word-spacing:-0.4em]'> Projects and Experience </h1>
                     <div>
-                        <ItemCard
-                            title="CallForward"
-                            description="An independent Next.js project. Call forward is a responsive scheduling application providing
-                             Call forwarding services. It allows users the ability to build an on-call team with a number in
-                             a zip code of their choice, and creating a schedule that will automatically forward any calls
-                             received at the selected number to the appropriate user."
-                            imageSrc="/call-forward-thumbnail.png"
-                            link="/pages/app-dev/call-forward"
-                        />
+                        <CardCarousel items={experienceArray} className="py-4" />
                     </div>
                 </div>
             </main>

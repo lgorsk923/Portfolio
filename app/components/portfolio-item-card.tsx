@@ -11,13 +11,9 @@ import {
 } from "@/components/ui/card"
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
+import { ItemCardProps } from "@/lib/AppDevExperince";
 
-interface ItemCardProps {
-    title: string;
-    description: string;
-    imageSrc: string;
-    link: string;
-}
+
 
 export function ItemCard({ title, description, imageSrc, link }: ItemCardProps) {
     const [expanded, setExpanded] = useState(false);
@@ -36,7 +32,7 @@ export function ItemCard({ title, description, imageSrc, link }: ItemCardProps) 
 
     return (
         <Link href={link}>
-            <Card className="relative mx-auto w-3/4 max-w-sm pt-0 mt-4 pb-0">
+            <Card className="relative mx-auto w-6/7 max-w-sm pt-0 mt-4 pb-0">
                 <div className="absolute inset-0 z-30 aspect-video" />
                 <img
                     src={imageSrc}

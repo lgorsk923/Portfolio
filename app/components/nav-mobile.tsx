@@ -15,7 +15,7 @@ import { SearchBar } from "./search-bar";
 
 export function NavbarExpanded() {
     return (
-        <Sidebar>
+        <Sidebar >
             <SidebarHeader>
                 <h1 className='text-xl font-bold'>Menu</h1>
                 {
@@ -25,28 +25,28 @@ export function NavbarExpanded() {
             <SidebarContent>
                 <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive>
-                        <Link href="/">
+                        <Link href="/" >
                             Home
                         </Link>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive>
-                        <Link href="/pages/app-dev/">
+                        <Link href="/pages/app-dev/" className='[word-spacing:-0.3em]'>
                             Application Development
                         </Link>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive>
-                        <Link href="/pages/private-voice/">
+                        <Link href="/pages/private-voice/" className='[word-spacing:-0.3em]'>
                             Private Voice Instruction
                         </Link>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive>
-                        <Link href="/pages/contact/">
+                        <Link href="/pages/contact/" className='[word-spacing:-0.3em]'>
                             Contact Me
                         </Link>
                     </SidebarMenuButton>
@@ -61,10 +61,10 @@ export function NavbarExpanded() {
 
 export function NavMobile({ children }: { children: React.ReactNode }) {
     return (
-        <SidebarProvider className="bg-cyan-50 py-4">
+        <SidebarProvider className="bg-cyan-50 pb-4">
             <NavbarExpanded />
             <main>
-                <div className="flex flex-row items-stretch pb-4 border-b-2 border-violet-900">
+                <div className="sticky top-0 z-50 flex flex-row items-stretch border-b-2 border-violet-900 bg-cyan-50 py-4">
                     <SidebarTrigger className='px-8 justify-center' />
                     <h1 className='ps-5 text-2xl flex-1 flex text-violet-900 font-bold'> Laura Gaffigan</h1>
                 </div>
