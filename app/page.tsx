@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="flex flex-col flex-1 h-screen bg-[url('/home-background.jpg')] bg-cover bg-center bg-no-repeat">
       <main className="flex flex-col flex-1 justify-center sm:justify-start">
@@ -23,7 +23,7 @@ export default function Home() {
           <p className='max-w-md text-2xl leading-8 text-black dark:text-zinc-400'>
             Private Voice Instructor          </p>
           <p className="max-w-md text-2xl leading-8 text-black dark:text-zinc-400">
-            Frontend Developer
+            Web & App. Developer
           </p>
         </div>
       </main>

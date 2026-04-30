@@ -32,8 +32,8 @@ export function NavbarExpanded() {
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive>
-                        <Link href="/pages/front-end/">
-                            Frontend Devleopment
+                        <Link href="/pages/app-dev/">
+                            Application Development
                         </Link>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -61,10 +61,13 @@ export function NavbarExpanded() {
 
 export function NavMobile({ children }: { children: React.ReactNode }) {
     return (
-        <SidebarProvider className="bg-cyan-50 py-3">
+        <SidebarProvider className="bg-cyan-50 py-4">
             <NavbarExpanded />
             <main>
-                <SidebarTrigger className=' pb-3 ps-3' />
+                <div className="flex flex-row items-stretch pb-4 border-b-2 border-violet-900">
+                    <SidebarTrigger className='px-8 justify-center' />
+                    <h1 className='ps-5 text-2xl flex-1 flex text-violet-900 font-bold'> Laura Gaffigan</h1>
+                </div>
                 {children}
             </main>
         </SidebarProvider>
