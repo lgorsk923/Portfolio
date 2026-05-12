@@ -61,12 +61,14 @@ export function NavbarExpanded() {
 
 export function NavMobile({ children }: { children: React.ReactNode }) {
     return (
-        <SidebarProvider className="bg-cyan-50 pb-4">
-            <NavbarExpanded />
-            <main>
-                <div className="sticky top-0 z-50 flex flex-row items-stretch border-b-2 border-violet-900 bg-cyan-50 py-4">
+        <SidebarProvider className="bg-[#412C95] pb-4">
+            <div className="md:hidden">
+                <NavbarExpanded />
+            </div>
+            <main className="flex-1">
+                <div className="sticky top-0 z-50 flex flex-row items-stretch border-b-2 border-[#4B0082] bg-[#412C95] py-4 md:hidden">
                     <SidebarTrigger className='px-8 justify-center' />
-                    <h1 className='ps-5 text-2xl flex-1 flex text-violet-900 font-bold'> Laura Gaffigan</h1>
+                    <h1 className='ps-5 text-2xl flex-1 flex text-[#F5F5F5] font-bold'> Laura Gaffigan</h1>
                 </div>
                 {children}
             </main>

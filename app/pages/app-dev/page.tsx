@@ -5,12 +5,12 @@ import { AppDevExperience } from "@/lib/AppDevExperince";
 export default function Page() {
     let experienceArray = AppDevExperience
     return (
-        <div className="flex flex-col flex-1 bg-cyan-50 bg-cover bg-center bg-no-repeat">
+        <div className="flex flex-col flex-1 bg-[#B0E0E6]bg-cover bg-center bg-no-repeat">
             <main className="flex flex-col flex-1 sm:justify-start">
                 <div>
                     <div className="relative">
                         <div className="absolute inset-0 bg-[url('/development-background.jpg')] bg-cover bg-center bg-no-repeat opacity-30" />
-                        <h1 className="relative flex py-4 min-w-0 items-center px-8 text-4xl font-semibold text-violet-900 dark:text-zinc-50 sm:text-6xl">
+                        <h1 className="relative flex py-4 min-w-0 items-center px-8 text-4xl font-semibold text-[#4B0082] dark:text-zinc-50 sm:text-6xl">
                             Full-Stack Development
                         </h1>
                     </div>
@@ -26,7 +26,7 @@ export default function Page() {
                             Figma designs into pixel-perfect, accessible applications.
                         </p>
                     </div>
-                    <h1 className='text-2xl px-8 [word-spacing:-0.4em]'> Projects and Experience </h1>
+                    <h1 className='text-2xl [word-spacing:-0.4em] bg-green-500 w-5/6 rounded-lg pb-4 pt-3 mx-auto text-center'> Projects and Experience </h1>
                     <div>
                         <CardCarousel items={experienceArray} className="py-4" />
                     </div>

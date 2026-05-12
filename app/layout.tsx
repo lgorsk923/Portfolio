@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 import { NavMobile } from "./components/nav-mobile";
-
+import { bjCree, jomolhari } from "./fonts";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -12,17 +11,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const bjCree = localFont({
-  variable: "--font-bj-cree",
-  display: "swap",
-  src: [
-    { path: "./fonts/BJCree/BJCree-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./fonts/BJCree/BJCree-Medium.ttf", weight: "500", style: "normal" },
-    { path: "./fonts/BJCree/BJCree-SemiBold.ttf", weight: "600", style: "normal" },
-    { path: "./fonts/BJCree/BJCree-Bold.ttf", weight: "700", style: "normal" },
-  ],
 });
 
 export const metadata: Metadata = {
@@ -38,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${bjCree.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${bjCree.variable} ${jomolhari.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <NavMobile>

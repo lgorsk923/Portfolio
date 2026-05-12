@@ -3,7 +3,7 @@ export default function Page() {
         <div className="flex flex-col flex-1 h-screen bg-[url('/private-voice-background.jpg')] bg-cover bg-center bg-no-repeat">
             <main className="flex flex-col flex-1 justify-center sm:justify-start">
                 <div>
-                    <h1 className="flex h-[125px] min-w-0 items-center bg-cyan-50 px-4 py-3 text-4xl font-semibold text-violet-900 dark:text-zinc-50 sm:text-6xl">
+                    <h1 className="flex h-[125px] min-w-0 items-center bg-[#B0E0E6] px-4 py-3 text-4xl font-semibold text-[#4B0082] dark:text-zinc-50 sm:text-6xl">
                         Private Voice Instruction
                     </h1>
                 </div>
