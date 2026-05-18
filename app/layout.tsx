@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { NavMobile } from "./components/nav-mobile";
+import { Nav } from "./components/nav-mobile";
 import { bjCree, jomolhari } from "./fonts";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +29,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${bjCree.variable} ${jomolhari.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <NavMobile>
+        <Nav>
           {children}
-        </NavMobile>
+        </Nav>
       </body>
     </html>
   );

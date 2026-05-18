@@ -38,11 +38,11 @@ export default function CardCarousel({ items, className }: CarouselProps) {
     const showArrows = !(isLarge && items.length <= 3);
 
     return (
-        <div className={`w-full ${className ?? ""}`}>
-            <div className="relative right-[8px] mx-auto w-[355px] md:w-6/7 xl:max-w-5xl">
+        <div className={`w-full pt-1 ${className ?? ""}`}>
+            <div className="relative mx-auto w-full max-w-5xl px-2 md:w-6/7 md:px-0">
                 <Carousel
-                    className="mx-auto w-[275px] md:w-full"
-                    opts={{ align: "center", loop: true, containScroll: "trimSnaps" }}
+                    className="mx-auto w-full"
+                    opts={{ align: "center", loop: items.length > 1, containScroll: false }}
                     plugins={[
                         Autoplay({
                             delay: 4000,
@@ -64,8 +64,8 @@ export default function CardCarousel({ items, className }: CarouselProps) {
                     </CarouselContent>
                     {showArrows && (
                         <>
-                            <CarouselPrevious className="-left-4 md:-left-9" />
-                            <CarouselNext className="-right-4 md:-right-9" />
+                            <CarouselPrevious className="left-1 md:-left-9" />
+                            <CarouselNext className="right-1 md:-right-9" />
                         </>
                     )}
                 </Carousel>

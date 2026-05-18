@@ -11,6 +11,7 @@ import {
     SidebarFooter,
     SidebarMenuButton
 } from "@/components/ui/sidebar"
+import { jomolhari } from "@/app/fonts";
 import { SearchBar } from "./search-bar";
 
 export function NavbarExpanded() {
@@ -59,16 +60,22 @@ export function NavbarExpanded() {
     )
 }
 
-export function NavMobile({ children }: { children: React.ReactNode }) {
+export function Nav({ children }: { children: React.ReactNode }) {
     return (
-        <SidebarProvider className="bg-[#412C95] pb-4">
+        <SidebarProvider className="flex-col bg-[#412C95] pb-4">
             <div className="md:hidden">
                 <NavbarExpanded />
             </div>
             <main className="flex-1">
-                <div className="sticky top-0 z-50 flex flex-row items-stretch border-b-2 border-[#4B0082] bg-[#412C95] py-4 md:hidden">
-                    <SidebarTrigger className='px-8 justify-center' />
-                    <h1 className='ps-5 text-2xl flex-1 flex text-[#F5F5F5] font-bold'> Laura Gaffigan</h1>
+                <div className="sticky top-0 z-50 flex items-center border-b-2 border-[#4B0082] bg-[#412C95] py-4 relative
+                md:py-9">
+                    <SidebarTrigger className='px-8 justify-center z-10
+                    md:px-14' />
+                    <h1 className={`${jomolhari.className} absolute left-1/2 -translate-x-1/2 w-full px-16 text-center text-2xl font-bold text-[#F5F5F5] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.5]
+                    md:text-5xl
+                    xl:text-6xl `}>
+                        Laura Gaffigan
+                    </h1>
                 </div>
                 {children}
             </main>
