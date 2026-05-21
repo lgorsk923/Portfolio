@@ -189,7 +189,10 @@ function Sidebar({
           data-sidebar="sidebar"
           data-slot="sidebar"
           data-mobile="true"
-          className="sidebar-mobile-width w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+          className={cn(
+            "sidebar-mobile-width [--sidebar-mobile-top:0px] [--sidebar-mobile-height:100svh] [--sidebar-mobile-width:18rem] bg-sidebar p-0 text-sidebar-foreground data-[side=left]:!inset-y-auto data-[side=right]:!inset-y-auto !top-[var(--sidebar-mobile-top)] !bottom-auto !h-[var(--sidebar-mobile-height)] !w-[var(--sidebar-mobile-width)] [&>button]:hidden",
+            className
+          )}
           side={side}
         >
           <SheetHeader className="sr-only">
@@ -215,7 +218,7 @@ function Sidebar({
       <div
         data-slot="sidebar-gap"
         className={cn(
-          "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
+          "relative w-(--sidebar-width) bg-sidebar transition-[width] duration-200 ease-linear",
           "group-data-[collapsible=offcanvas]:w-0",
           "group-data-[side=right]:rotate-180",
           variant === "floating" || variant === "inset"

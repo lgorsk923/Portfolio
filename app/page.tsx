@@ -5,7 +5,17 @@ import { afacad } from "./fonts";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-function RoleDescription({ title, description, className }: { title: string; description: string; className?: string }) {
+function RoleDescription({
+  title,
+  description,
+  className,
+  onPanelRef,
+}: {
+  title: string;
+  description: string;
+  className?: string;
+  onPanelRef?: (el: HTMLDivElement | null) => void;
+}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasOverflow, setHasOverflow] = useState(false);
   const visibleRef = useRef<HTMLParagraphElement>(null);
@@ -52,9 +62,12 @@ function RoleDescription({ title, description, className }: { title: string; des
   }, [description]);
 
   return (
-    <div className={`relative mt-3 mb-5 pb-2 bg-[#C9D8C7] mx-2 px-2 w-15/17 flex flex-col ${className}
+    <div
+      ref={onPanelRef}
+      className={`relative mt-3 mb-5 pb-2 bg-[#C9D8C7] mx-2 px-2 w-15/17 flex flex-col ${className}
     md:mx-5 md:w-5/7 md:px-5 md:pt-2 md:rounded-lg
-    lg:mx-15 lg:my-10 lg:max-w-4/7 xl:my-6 xl:pb-1`} >
+    lg:mx-15 lg:my-10 lg:max-w-4/7 xl:my-6 xl:pb-1`}
+    >
       <h1 className='text-base font-bold pt-2
       lg:text-lg'>{title}</h1>
       <p
@@ -69,22 +82,69 @@ function RoleDescription({ title, description, className }: { title: string; des
       >
         {description}
       </p>
-      <div className='min-h-6 xl:min-h-5 flex items-start'>
-        {hasOverflow ? (
-          <button
-            type='button'
-            onClick={() => setIsExpanded((prev) => !prev)}
-            className='self-start text-left text-[#736D6D] text-sm font-semibold underline cursor-pointer my-1 leading-none'
-          >
-            {isExpanded ? "See less" : "See more"}
-          </button>
-        ) : null}
+      <div className='h-7 xl:h-6 flex items-start'>
+        <button
+          type='button'
+          onClick={() => setIsExpanded((prev) => !prev)}
+          tabIndex={hasOverflow ? 0 : -1}
+          className={`self-start text-left text-[#736D6D] text-sm font-semibold underline cursor-pointer leading-none ${hasOverflow ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        >
+          {isExpanded ? "See less" : "See more"}
+        </button>
       </div>
     </div>
   );
 }
 
 export default function Page() {
+  const rolePanelsRef = useRef<Array<HTMLDivElement | null>>([]);
+
+  useEffect(() => {
+    const syncHeights = () => {
+      const panels = rolePanelsRef.current.filter((el): el is HTMLDivElement => Boolean(el));
+      if (!panels.length) return;
+
+      const isXl = window.matchMedia("(min-width: 1280px)").matches;
+      if (!isXl) {
+        panels.forEach((panel) => {
+          panel.style.minHeight = "";
+        });
+        return;
+      }
+
+      const heights = panels
+        .map((el) => {
+          const prevMinHeight = el.style.minHeight;
+          el.style.minHeight = "";
+          const height = el.offsetHeight;
+          el.style.minHeight = prevMinHeight;
+          return height;
+        });
+
+      const tallest = Math.max(...heights);
+      const minHeightValue = tallest > 0 ? `${tallest}px` : "";
+      panels.forEach((panel) => {
+        panel.style.minHeight = minHeightValue;
+      });
+    };
+
+    syncHeights();
+    const timer = window.setTimeout(syncHeights, 0);
+
+    const observer = new ResizeObserver(syncHeights);
+    rolePanelsRef.current.forEach((panel) => {
+      if (panel) observer.observe(panel);
+    });
+
+    window.addEventListener("resize", syncHeights);
+
+    return () => {
+      window.clearTimeout(timer);
+      observer.disconnect();
+      window.removeEventListener("resize", syncHeights);
+    };
+  }, []);
+
   return (
     <div className='pt-2 px-3 bg-white grid grid-cols-7 gap-1'>
       <div className='col-span-full'>
@@ -102,9 +162,9 @@ export default function Page() {
         </div>
 
       </div>
-      <div className='block col-span-full xl: w-6/7 xl:mx-auto xl:my-6'>
+      <div className='block col-span-full xl:w-6/7 xl:mx-auto xl:my-1'>
         {/* picture and contact info */}
-        <div className='md:float-left md:w-2/7 md:mr-3 xl:w-1/6'>
+        <div className='md:float-left md:w-2/7 md:mr-3 xl:w-1/4'>
           <div className='flex flex-row md:flex-col'>
             <div className='w-2/5 md:w-full shrink-0'>
               <Image
@@ -130,14 +190,25 @@ export default function Page() {
         md:overflow-hidden md:mt-0 md:py-2`} >
           <RoleDescription
             title='Full-Stack Developer'
-            description='Laura has been working as a front and backend developer for the past four years, specializing in building scalable responsive web applications that utilize RESTful APIs and communicate effectively with databases.' />
+            description='Laura has been working as a front and backend developer for the past four years, specializing in building scalable responsive web applications that utilize RESTful APIs and communicate effectively with databases.'
+            onPanelRef={(el) => {
+              rolePanelsRef.current[0] = el;
+            }}
+          />
           <RoleDescription
             title='Musician'
             description='Appearing in productions and concerts for the last 2 decades, Laura loves to perform. She has performed vocally on her local community theater stage as well as in the Super Bowl XLVI Halftime Show.'
-            className='justify-self-end' />
+            className='justify-self-end'
+            onPanelRef={(el) => {
+              rolePanelsRef.current[1] = el;
+            }}
+          />
           <RoleDescription
             title='Vocal Coach'
             description='Laura has been coaching vocalists for the past decade, helping them improve their technique and performance skills.'
+            onPanelRef={(el) => {
+              rolePanelsRef.current[2] = el;
+            }}
           />
         </div>
       </div>
