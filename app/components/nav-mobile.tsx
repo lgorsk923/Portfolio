@@ -9,17 +9,15 @@ import {
     SidebarContent,
     SidebarMenu,
     SidebarMenuItem,
-    SidebarFooter,
     SidebarMenuButton
 } from "@/components/ui/sidebar"
 import { jomolhari } from "@/app/fonts";
-import { SearchBar } from "./search-bar";
 
 export function NavbarExpanded() {
     return (
         <Sidebar className="border-5 border-[#C9D8C7] rounded-br-xl
-        data-[side=left]:!border-r-5 [--sidebar-mobile-width:66.666%] [--sidebar-mobile-top:4rem] [--sidebar-mobile-height:25svh] [--sidebar:#F5F5F5] [--sidebar-accent:#F5F5F5] 
-        md:top-24 md:bottom-auto md:h-[25svh] lg:h-[28svh] xl:h-[30svh] lg:[--sidebar-width:18rem] xl:[--sidebar-width:20rem]" >
+            data-[side=left]:!border-r-5 [--sidebar-mobile-width:66.666%] [--sidebar-mobile-top:4rem] [--sidebar-mobile-height:30svh] [--sidebar:#F5F5F5] [--sidebar-accent:#F5F5F5] overflow-hidden
+        md:top-24 md:bottom-auto md:h-[30svh] lg:h-[35svh] xl:h-[30svh] lg:[--sidebar-width:18rem] xl:[--sidebar-width:20rem]" >
             <SidebarHeader className='px-4 pt-2'>
                 <h1 className='text-xl font-bold lg:text-2xl'>Menu</h1>
                 {

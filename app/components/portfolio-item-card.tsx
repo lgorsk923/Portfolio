@@ -33,7 +33,7 @@ export function ItemCard({ title, description, imageSrc, link }: ItemCardProps) 
 
     return (
         <Link href={link}>
-            <Card className="relative mx-auto w-7/9 max-w-sm pt-0 mt-4 pb-0 border-4 border-[#6EA9AD] bg-[#F5F5F5] gap-y-2 gap-x-0">
+            <Card className="relative mx-auto mt-4 w-[70vw] max-w-[260px] pt-0 pb-0 gap-x-0 gap-y-2 border-4 border-[#6EA9AD] bg-[#F5F5F5] md:w-full xl:max-w-[300px]">
                 <div className="absolute inset-0 z-30 aspect-video" />
                 <img
                     src={imageSrc}
@@ -43,9 +43,9 @@ export function ItemCard({ title, description, imageSrc, link }: ItemCardProps) 
                 <CardHeader className='px-0 gap-0'>
                     <CardAction>
                     </CardAction>
-                    <CardTitle className={`${afacad.className} text-lg py-0 px-2`}>{title}</CardTitle>
+                    <CardTitle className={`${afacad.className} text-lg py-0 px-4 md:text-base lg:text-lg`}>{title}</CardTitle>
                     <CardDescription
-                        className={`${expanded ? "max-h-none" : "max-h-[4.5rem] overflow-hidden"} px-2 mx-2 pt-1 ${afacad.className} bg-[#C9D8C7] leading-6`}
+                        className={`${expanded ? "max-h-none" : "max-h-[5rem] overflow-hidden"} px-4 mx-2 pt-2 ${afacad.className} bg-[#C9D8C7] leading-6 lg:text-base`}
                         ref={descriptionRef}
                     >
                         {description}
@@ -59,7 +59,7 @@ export function ItemCard({ title, description, imageSrc, link }: ItemCardProps) 
                                     e.stopPropagation()
                                     setExpanded((prev) => !prev)
                                 }}
-                                className={`${afacad.className} m-0 h-auto min-h-0 px-2 pb-2 pt-0 items-start col-span-2 w-fit text-xs font-semibold text-[#495D57] hover:underline`}
+                                className={`${afacad.className} m-0 h-auto min-h-0 px-4 pb-2 pt-0 items-start col-span-2 w-fit text-xs font-semibold text-[#495D57] hover:underline`}
                             >
                                 {expanded ? "Show less" : "See more"}
                             </Button>

@@ -162,7 +162,7 @@ export default function Page() {
         </div>
 
       </div>
-      <div className='block col-span-full xl:w-6/7 xl:mx-auto xl:my-1'>
+      <div className='block col-span-full xl:w-6/7 xl:mx-auto xl:mt-1 lg:mb-7 xl:mb-10'>
         {/* picture and contact info */}
         <div className='md:float-left md:w-2/7 md:mr-3 xl:w-1/4'>
           <div className='flex flex-row md:flex-col'>
