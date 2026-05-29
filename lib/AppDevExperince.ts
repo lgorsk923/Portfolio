@@ -14,8 +14,8 @@ export const AppDevExperience: ItemCardProps[] = [
     },
     {
         title: "In Touch Pharmaceuticals",
-        description: "I worked as a contracted developer to transform legacy customer facing applications into an easy-to-use, modern system.",
+        description: "I have worked with ITP for the last 3 years as a contracted developer to complete several projects including transforming legacy customer facing applications into an easy-to-use, modern system.",
         imageSrc: "/in-touch.png",
-        link: "/pages/app-dev/in-touch"
+        link: "/pages/app-dev/itp"
     }
 ]
