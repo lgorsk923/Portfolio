@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Laura Gaffigan",
   description: "Portfolio Website",
+  icons: {
+    icon: "/L.ico",
+  },
 };
 
 export default function RootLayout({
