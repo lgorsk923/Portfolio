@@ -59,47 +59,49 @@ export default function Page() {
                                 className='my-2 rounded-lg'
                             />
                         </div>
-                        <div className='bg-white border-5 border-[#C9D8C7] rounded-xl
+                        <div className='xl:w-4/5 xl:mx-auto'>
+                            <div className='bg-white m-3 rounded-xl
                     md:w-4/5 md:my-7 lg:w-4/5 xl:w-3/5 xl:my-12'>
-                            <p className={` ${afacad.className} py-4 px-5 md:px-9 md:py-7 lg:px-12 lg:py-9 xl:px-16 xl:py-12 w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl`}>
-                                An independent Next.js project. Call Forward is a responsive scheduling application providing
-                                call forwarding services. It allows users the ability to build an on-call team with a designated phone number in
-                                a zip code of their choice. It also aids in the facilitation of creating a schedule that will automatically forward any calls
-                                received at the selected number to the appropriate user.
-                            </p>
-                        </div>
-                        <div className={`bg-white border-5 border-[#C9D8C7] rounded-xl mt-2
+                                <p className={` ${afacad.className} py-4 px-5 md:px-9 md:py-7 lg:px-12 lg:py-9 xl:px-16 xl:py-12 w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl`}>
+                                    An independent Next.js project. Call Forward is a responsive scheduling application providing
+                                    call forwarding services. It allows users the ability to build an on-call team with a designated phone number in
+                                    a zip code of their choice. It also aids in the facilitation of creating a schedule that will automatically forward any calls
+                                    received at the selected number to the appropriate user.
+                                </p>
+                            </div>
+                            <div className={`bg-white rounded-xl mx-3 mt-5 py-1 px-2
                         md:w-3/5 md:ml-auto md:my-7 lg:w-3/5 xl:w-3/5 xl:my-12 ${canExpandSkills && !isLargeViewport ? "" : "pb-5 md:pb-6"}`}>
-                            <h3 className='my-2 font-bold md:mt-5 md:px-9 xl:px-15'>Highlighted Skills:</h3>
-                            <p
-                                ref={skillsRef}
-                                className={` ${afacad.className} px-5 md:px-9 lg:px-12 xl:px-16 w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl ${isLargeViewport || expandedSkills ? "" : "line-clamp-2 pb-4"}`}
-                            >
-                                React, Next.js, TypeScript, Tailwind CSS, Figma, Vercel, Neon, PostgreSQL, AWS Cognito, Stripe Twilio API, Git, GitHub, Responsive Design, UI/UX Design, Figma
-                            </p>
-                            {canExpandSkills && !isLargeViewport && (
-                                <button
-                                    type="button"
-                                    onClick={() => setExpandedSkills((prev) => !prev)}
-                                    className={`${afacad.className} mb-4 ml-5 text-xs font-semibold text-[#495D57] hover:underline md:text-base md:ml-9 lg:ml-12 xl:ml-16`}
+                                <h3 className='mt-2 mb-1 mx-2 font-bold md:mt-5 md:px-9 xl:px-15'>Highlighted Skills:</h3>
+                                <p
+                                    ref={skillsRef}
+                                    className={` ${afacad.className} px-5 md:px-9 lg:px-12 xl:px-16 w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl ${isLargeViewport || expandedSkills ? "" : "line-clamp-2 max-h-14 overflow-hidden"}`}
                                 >
-                                    {expandedSkills ? "See less" : "See more"}
-                                </button>
-                            )}
-                        </div>
-                        <div className='bg-white border-5 border-[#C9D8C7] rounded-xl mt-2 py-4
-                    md:w-3/5 md:my-7 lg:w-2/5 xl:my-12'>
-                            <h3 className='mx-4 font-bold md:px-5'>Project Files:</h3>
-                            <div className='grid grid-cols-1 border-[#6EA9AD] border-2 mx-4 px-3 py-2 md:mx-9'>
-                                <Link href='https://www.figma.com/design/PPYARyYddHDNelpTKSIN8Y/Call-Forward-Pro?node-id=56-3084&t=JiV93tTTNW8sIqIv-1' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
-                                    Figma Files
-                                </Link>
-                                <Link href='/CallForward_Mobile_View.pdf' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
-                                    Mobile-View Preview
-                                </Link>
-                                <Link href='/CallForward_Desktop_View.pdf' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
-                                    Desktop-View Preview
-                                </Link>
+                                    React, Next.js, TypeScript, Tailwind CSS, Figma, Vercel, Neon, PostgreSQL, AWS Cognito, Stripe Twilio API, Git, GitHub, Responsive Design, UI/UX Design, Figma
+                                </p>
+                                {canExpandSkills && !isLargeViewport && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setExpandedSkills((prev) => !prev)}
+                                        className={`${afacad.className} mb-4 ml-5 text-xs font-semibold text-[#495D57] hover:underline md:text-base md:ml-9 lg:ml-12 xl:ml-16`}
+                                    >
+                                        {expandedSkills ? "See less" : "See more"}
+                                    </button>
+                                )}
+                            </div>
+                            <div className='bg-white rounded-xl mx-3 mt-5 py-4
+                    md:w-3/5 md:my-7 lg:w-1/3 xl:w-1/4 xl:my-12'>
+                                <h3 className='mx-4 mb-1 font-bold md:px-5'>Project Files:</h3>
+                                <div className='grid grid-cols-1 border-[#6EA9AD] border-2 mx-4 px-3 py-2 md:mx-9'>
+                                    <Link href='https://www.figma.com/design/PPYARyYddHDNelpTKSIN8Y/Call-Forward-Pro?node-id=56-3084&t=JiV93tTTNW8sIqIv-1' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
+                                        Figma Files
+                                    </Link>
+                                    <Link href='/CallForward_Mobile_View.pdf' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
+                                        Mobile-View Preview
+                                    </Link>
+                                    <Link href='/CallForward_Desktop_View.pdf' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
+                                        Desktop-View Preview
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

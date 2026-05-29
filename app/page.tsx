@@ -8,11 +8,13 @@ import Link from "next/link";
 function RoleDescription({
   title,
   description,
+  href,
   className,
   onPanelRef,
 }: {
   title: string;
   description: string;
+  href?: string;
   className?: string;
   onPanelRef?: (el: HTMLDivElement | null) => void;
 }) {
@@ -21,6 +23,9 @@ function RoleDescription({
   const visibleRef = useRef<HTMLParagraphElement>(null);
   const measureRef = useRef<HTMLParagraphElement>(null);
   const descriptionClasses = "text-sm leading-5 lg:text-base lg:leading-6";
+  const interactiveClasses = href
+    ? "cursor-pointer transition-shadow hover:ring-2 hover:ring-[#6EA9AD] focus-within:ring-2 focus-within:ring-[#6EA9AD]"
+    : "";
 
   useEffect(() => {
     const checkOverflow = () => {
@@ -61,10 +66,10 @@ function RoleDescription({
     };
   }, [description]);
 
-  return (
+  const cardContent = (
     <div
       ref={onPanelRef}
-      className={`relative mt-3 mb-5 pb-2 bg-[#C9D8C7] mx-2 px-2 w-15/17 flex flex-col ${className}
+      className={`relative mt-3 mb-5 pb-2 bg-[#C9D8C7] mx-2 px-2 w-15/17 flex flex-col ${interactiveClasses} ${className}
     md:mx-5 md:w-5/7 md:px-5 md:pt-2 md:rounded-lg
     lg:mx-15 lg:my-10 lg:max-w-4/7 xl:my-6 xl:pb-1`}
     >
@@ -85,7 +90,11 @@ function RoleDescription({
       <div className='h-7 xl:h-6 flex items-start'>
         <button
           type='button'
-          onClick={() => setIsExpanded((prev) => !prev)}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setIsExpanded((prev) => !prev);
+          }}
           tabIndex={hasOverflow ? 0 : -1}
           className={`self-start text-left text-[#736D6D] text-sm font-semibold underline cursor-pointer leading-none ${hasOverflow ? "opacity-100" : "pointer-events-none opacity-0"}`}
         >
@@ -94,6 +103,16 @@ function RoleDescription({
       </div>
     </div>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className="block">
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return cardContent;
 }
 
 export default function Page() {
@@ -156,7 +175,7 @@ export default function Page() {
             Performance
           </Link>
           <Link href='/pages/gaffigan-voice-studio' className="text-center py-2 hover:underline">
-            Education
+            Coaching
           </Link>
 
         </div>
@@ -191,6 +210,7 @@ export default function Page() {
           <RoleDescription
             title='Full-Stack Developer'
             description='Laura has been working as a front and backend developer for the past four years, specializing in building scalable responsive web applications that utilize RESTful APIs and communicate effectively with databases.'
+            href='/pages/app-dev'
             onPanelRef={(el) => {
               rolePanelsRef.current[0] = el;
             }}
@@ -198,6 +218,7 @@ export default function Page() {
           <RoleDescription
             title='Musician'
             description='Appearing in productions and concerts for the last 2 decades, Laura loves to perform. She has performed vocally on her local community theater stage as well as in the Super Bowl XLVI Halftime Show.'
+            href='/pages/performance'
             className='justify-self-end'
             onPanelRef={(el) => {
               rolePanelsRef.current[1] = el;
@@ -206,6 +227,7 @@ export default function Page() {
           <RoleDescription
             title='Vocal Coach'
             description='Laura has been coaching vocalists for the past decade, helping them improve their technique and performance skills.'
+            href='/pages/gaffigan-voice-studio'
             onPanelRef={(el) => {
               rolePanelsRef.current[2] = el;
             }}
