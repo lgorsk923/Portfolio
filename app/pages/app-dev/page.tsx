@@ -1,8 +1,7 @@
 import CardCarousel from "@/app/components/card-carousel";
-import { ItemCard } from "@/app/components/portfolio-item-card";
-import { Card } from "@/components/ui/card";
 import { afacad, jomolhari } from "../../fonts";
 import { AppDevExperience } from "@/lib/AppDevExperince";
+
 export default function Page() {
     let experienceArray = AppDevExperience
     return (

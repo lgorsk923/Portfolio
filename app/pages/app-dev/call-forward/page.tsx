@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { afacad, jomolhari } from "../../../fonts";
 import { useEffect, useRef, useState } from "react";
+import BackButton from "@/components/backButton";
 
 export default function Page() {
     const [expandedSkills, setExpandedSkills] = useState(false);
@@ -51,6 +52,7 @@ export default function Page() {
                         </h1>
                     </div>
                     <div className='bg-[#C9D8C7] px-5 pt-3 pb-6 md:px-20 md:py-9'>
+                        <BackButton href='/pages/app-dev' />
                         <div className='w-full md:w-4/5 md:mx-auto lg:w-4/5 xl:w-3/5 md:overflow-hidden md:rounded-lg md:aspect-[2/1]'>
                             <Image
                                 src='/call-forward-thumbnail.png' alt='Call Forward thumbnail'
@@ -69,7 +71,7 @@ export default function Page() {
                                     received at the selected number to the appropriate user.
                                 </p>
                             </div>
-                            <div className={`bg-white rounded-xl mx-3 mt-5 py-1 px-2
+                            <div className={`bg-white rounded-xl mx-3 mt-5 py-1 px-2 border-5 border-[#6EA9AD]
                         md:w-3/5 md:ml-auto md:my-7 lg:w-3/5 xl:w-3/5 xl:my-12 ${canExpandSkills && !isLargeViewport ? "" : "pb-5 md:pb-6"}`}>
                                 <h3 className='mt-2 mb-1 mx-2 font-bold md:mt-5 md:px-9 xl:px-15'>Highlighted Skills:</h3>
                                 <p
@@ -87,22 +89,20 @@ export default function Page() {
                                         {expandedSkills ? "See less" : "See more"}
                                     </button>
                                 )}
-                            </div>
-                            <div className='bg-white rounded-xl mx-3 mt-5 py-4
-                    md:w-3/5 md:my-7 lg:w-1/3 xl:w-1/4 xl:my-12'>
-                                <h3 className='mx-4 mb-1 font-bold md:px-5'>Project Files:</h3>
-                                <div className='grid grid-cols-1 border-[#6EA9AD] border-2 mx-4 px-3 py-2 md:mx-9'>
-                                    <Link href='https://www.figma.com/design/PPYARyYddHDNelpTKSIN8Y/Call-Forward-Pro?node-id=56-3084&t=JiV93tTTNW8sIqIv-1' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
+                                <h3 className='mx-2 mb-1 font-bold md:px-5'>Project Files:</h3>
+                                <div className='grid grid-cols-1 px-5 md:mx-9 pb-2'>
+                                    <Link href='https://www.figma.com/design/PPYARyYddHDNelpTKSIN8Y/Call-Forward-Pro?node-id=56-3084&t=JiV93tTTNW8sIqIv-1' className={`${afacad.className} text-[#495D57] hover:underline`} target="_blank" rel="noopener noreferrer">
                                         Figma Files
                                     </Link>
-                                    <Link href='/CallForward_Mobile_View.pdf' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
+                                    <Link href='/CallForward_Mobile_View.pdf' className={`${afacad.className} text-[#495D57] hover:underline`} target="_blank" rel="noopener noreferrer">
                                         Mobile-View Preview
                                     </Link>
-                                    <Link href='/CallForward_Desktop_View.pdf' className='text-[#495D57] hover:underline' target="_blank" rel="noopener noreferrer">
+                                    <Link href='/CallForward_Desktop_View.pdf' className={`${afacad.className} text-[#495D57] hover:underline`} target="_blank" rel="noopener noreferrer">
                                         Desktop-View Preview
                                     </Link>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

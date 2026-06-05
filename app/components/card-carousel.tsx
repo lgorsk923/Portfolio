@@ -35,15 +35,21 @@ export default function CardCarousel({ items, className }: CarouselProps) {
         };
     }, []);
 
-    const showArrows = !(isLarge && items.length <= 3);
-    const disableAutoplay = isLarge && items.length < 4;
+    const disableScroll = isLarge && items.length < 4;
+    const showArrows = !disableScroll;
+    const disableAutoplay = disableScroll;
 
     return (
         <div className={`w-full pt-1 ${className ?? ""}`}>
             <div className="relative mx-auto w-full max-w-5xl px-2 md:w-6/7 md:px-0 xl:w-full">
                 <Carousel
                     className="mx-auto w-full"
-                    opts={{ align: "center", loop: items.length > 1, containScroll: false }}
+                    opts={{
+                        align: disableScroll ? "start" : "center",
+                        loop: !disableScroll && items.length > 1,
+                        containScroll: disableScroll ? "trimSnaps" : false,
+                        watchDrag: !disableScroll,
+                    }}
                     plugins={disableAutoplay
                         ? []
                         : [

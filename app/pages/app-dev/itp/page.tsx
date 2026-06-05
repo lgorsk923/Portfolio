@@ -2,11 +2,12 @@
 
 import { jomolhari, afacad } from '../../../fonts';
 import Image from 'next/image';
-import Link
-    from 'next/link';
 import { useEffect, useState, useRef } from 'react';
+import BackButton from '@/components/backButton';
+
 export default function Page() {
     const [expandedSkills, setExpandedSkills] = useState(false);
+    const [showVideo, setShowVideo] = useState(false);
     const [canExpandSkills, setCanExpandSkills] = useState(false);
     const skillsRef = useRef<HTMLParagraphElement | null>(null);
     const [isLargeViewport, setIsLargeViewport] = useState(false);
@@ -49,10 +50,13 @@ export default function Page() {
                             In Touch Pharmaceuticals
                         </h1>
                     </div>
+
                     <div className='bg-[#C9D8C7] px-5 pt-3 pb-6 md:px-10 md:py-9'>
+                        <BackButton href='/pages/app-dev' />
                         <div className='w-full md:w-5/6 md:mx-auto md:overflow-hidden md:rounded-lg md:aspect-[2/1]'>
                             <Image
-                                src='/in-touch.png' alt='In Touch Pharmaceuticals thumbnail'
+                                src='/in-touch.png'
+                                alt='In Touch Pharmaceuticals thumbnail'
                                 width={800}
                                 height={450}
                                 className='my-2 rounded-lg md:my-0 md:h-full md:w-full md:object-cover md:object-top'
@@ -65,14 +69,42 @@ export default function Page() {
                                     I have worked with ITP for the last 3 years as a contracted developer to complete several projects and maintenance tasks. Summaries of each major project can be found below.
                                 </p>
                             </div>
-                            <div className='border-5 border-[#6EA9AD] bg-white rounded-xl mx-3 mt-5 py-2 px-5
+                            <div>
+                                <div className='border-5 border-[#6EA9AD] bg-white rounded-xl mx-3 mt-5 py-2 px-5
                         md:w-3/5 md:ml-auto md:my-7 lg:w-3/5 xl:w-3/5 xl:my-12'>
-                                <h3 className='font-semibold text-lg'>Hubspot Migration</h3>
-                                <p className={` ${afacad.className} px-2 mt-1 md:px-9 lg:px-12 xl:px-16 w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl`}>
-                                    In my most recent project, I orchestrated the migration of a complex corporate WordPress site to HubSpot CMS. I developed a library of custom modules and templates that will allow internal marketing teams to make updates easily while maintaining brand consistency.
-                                </p>
-                                <h3 className='mt-3 font-semibold text-base'>Highlighted Skills:</h3>
-                                <p className={`${afacad.className} text-base px-2 mt-1`}>WordPress & HubSpot CMS content management, HubL</p>
+                                    <h3 className='font-semibold text-lg'>Hubspot Migration</h3>
+                                    <p className={` ${afacad.className} px-2 mt-1 md:px-9 lg:px-12 xl:px-16 w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl`}>
+                                        In my most recent project, I orchestrated the migration of a complex corporate WordPress site to HubSpot CMS. I developed a library of custom modules and templates that will allow internal marketing teams to make updates easily while maintaining brand consistency.
+                                    </p>
+                                    <h3 className='mt-3 font-semibold text-base'>Highlighted Skills:</h3>
+                                    <p className={`${afacad.className} text-base px-2 mt-1`}>WordPress & HubSpot CMS content management, HubL</p>
+                                </div>
+                                {(isLargeViewport || showVideo) ? (
+                                    <div>
+                                        <video
+                                            controls
+                                            preload="none"
+                                            className='aspect-video w-[calc(100%-1.5rem)] rounded-xl mx-3 mt-5 object-cover md:w-3/5 md:ml-auto md:my-7 lg:w-3/5 xl:w-3/5 xl:my-12'>
+                                            <source src="/Hubspot_migration.mp4" type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        {!isLargeViewport && (
+                                            <button
+                                                onClick={() => setShowVideo(false)}
+                                                className={`${afacad.className} mt-2 px-5 py-2 rounded-lg bg-[#6EA9AD] text-white text-base font-semibold hover:bg-[#5a9297] transition-colors`}
+                                            >
+                                                Hide
+                                            </button>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <button
+                                        onClick={() => setShowVideo(true)}
+                                        className={`${afacad.className} mt-3 px-5 py-2 rounded-lg bg-[#6EA9AD] text-white text-base font-semibold hover:bg-[#5a9297] transition-colors`}
+                                    >
+                                        See Demo
+                                    </button>
+                                )}
                             </div>
                             <div className='border-5 border-[#6EA9AD] bg-white rounded-xl mx-3 mt-5 py-2 px-5
                         md:w-3/5 md:ml-auto md:my-7 lg:w-3/5 xl:w-3/5 xl:my-12'>
@@ -85,7 +117,7 @@ export default function Page() {
                         md:w-3/5 md:ml-auto md:my-7 lg:w-3/5 xl:w-3/5 xl:my-12'>
                                 <h3 className='font-semibold text-lg'>Policy and Procedure Digitization</h3>
                                 <p className={` ${afacad.className} px-2 mt-1 md:px-9 lg:px-12 xl:px-16 w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl`}>
-                                    I completed a full transcription and reformatting of the company's policy and procedure manuals. The project is easily editable by company associates as it was created using Markdown. Formatting and Styling were completed using designated CSS classes to maintain consistency in branding.
+                                    I completed a full transcription and reformatting of the company's policy and procedure manuals to be accessible via ITP's customer portal. The files are easily editable by company associates thanks to the utilization of Markdown. Formatting and styling were completed using designated CSS classes to maintain consistency in branding. Additionally, multiple branches of the manuals were created, allowing for easy customization across clients. Docfx was utilized to create pdf versions of each manual, and Github Actions were created to trigger the creation of updated pdfs anytime a new commit is made.
                                 </p>
                             </div>
                             {/*<div className='bg-white rounded-xl mx-3 mt-5 py-4
