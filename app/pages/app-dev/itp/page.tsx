@@ -51,9 +51,9 @@ export default function Page() {
                         </h1>
                     </div>
 
-                    <div className='bg-[#C9D8C7] px-5 pt-3 pb-6 md:px-10 md:py-9'>
+                    <div className='bg-[#C9D8C7] px-5 pt-2 pb-6 md:px-10 md:py-9'>
                         <BackButton href='/pages/app-dev' />
-                        <div className='w-full md:w-5/6 md:mx-auto md:overflow-hidden md:rounded-lg md:aspect-[2/1]'>
+                        <div className='w-full md:w-4/5 md:mx-auto xl:w-3/5 md:overflow-hidden rounded-lg md:aspect-[2/1]'>
                             <Image
                                 src='/in-touch.png'
                                 alt='In Touch Pharmaceuticals thumbnail'

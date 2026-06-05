@@ -51,14 +51,15 @@ export default function Page() {
                             Call Forward
                         </h1>
                     </div>
-                    <div className='bg-[#C9D8C7] px-5 pt-3 pb-6 md:px-20 md:py-9'>
+                    <div className='bg-[#C9D8C7] px-5 pt-2 pb-6 md:px-20 md:py-9'>
                         <BackButton href='/pages/app-dev' />
                         <div className='w-full md:w-4/5 md:mx-auto lg:w-4/5 xl:w-3/5 md:overflow-hidden md:rounded-lg md:aspect-[2/1]'>
                             <Image
-                                src='/call-forward-thumbnail.png' alt='Call Forward thumbnail'
+                                src='/call-forward-thumbnail.png'
+                                alt='Call Forward thumbnail'
                                 width={800}
                                 height={450}
-                                className='my-2 rounded-lg md:my-0 md:h-full md:w-full md:object-cover md:object-center'
+                                className='rounded-lg md:my-0 h-full w-full object-cover object-top'
                             />
                         </div>
                         <div className='xl:w-4/5 xl:mx-auto'>
