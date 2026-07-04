@@ -4,6 +4,7 @@ import Image from "next/image";
 import { afacad } from "./fonts";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import ContactCard from "./components/contact-card";
 
 function RoleDescription({
   title,
@@ -184,25 +185,7 @@ export default function Page() {
       <div className='block col-span-full xl:w-6/7 xl:mx-auto xl:mt-1 lg:mb-7 xl:mb-10'>
         {/* picture and contact info */}
         <div className='md:float-left md:w-2/7 md:mr-3 xl:w-1/4'>
-          <div className='flex flex-row md:flex-col'>
-            <div className='w-2/5 md:w-full shrink-0'>
-              <Image
-                src='/Profile_Image.png'
-                alt='Profile Image'
-                width={300}
-                height={300}
-                className='w-full h-auto '
-              />
-
-            </div>
-            <div className='flex-1 ps-2 pe-1 content-center bg-[#6EA9AD] text-[#F5F5F5]
-          md:px-3 md:pt-2 md:pb-4
-          xl:px-6 xl:pt-4 xl:pb-6'>
-              <h1 className='underline md:text-lg xl:text-xl'>Contact Information</h1>
-              <p className="text-sm pt-2 md:text-base xl:text-lg">Email: laura@gaffigan.net</p>
-              <p className="text-sm pt-1 md:text-base xl:text-lg">Phone: (224) 735-0532</p>
-            </div>
-          </div>
+          <ContactCard />
         </div>
         {/*Picture and contact info end */}
         <div className={`${afacad.className} col-span-full bg-[#F5F5F5] border-5 my-2 border-[#C9D8C7]

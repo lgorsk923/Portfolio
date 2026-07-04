@@ -141,3 +141,15 @@ body {
     @apply font-sans;
   }
 }
+
+.theme-green{
+  background-color: #C9D8C7;
+}
+
+.theme-teal{
+  background-color: #6ea9ad;
+}
+
+.theme-purple{
+  background-color: #4B0082;
+}
