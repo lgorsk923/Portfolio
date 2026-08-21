@@ -33,7 +33,7 @@ export interface contactFormData {
 export const formSchema = z.object({
     subject: z.string().optional(),
     name: z.string().min(1, { message: "Name is required" }),
-    email: z.email({ message: "Invalid email address" }),
+    email: z.string().min(1, { message: "Email is required" }).email({ message: "Invalid email address" }),
     message: z.string().min(1, { message: "Message is required" }).max(1000, { message: "Message must be less than 1000 characters" })
 });
 
@@ -49,10 +49,25 @@ export default function ContactForm() {
         }
     });
 
+    const submitWithValidation = async (formData: FormData) => {
+        const isValid = await form.trigger();
+        if (!isValid) {
+            return;
+        }
+
+        try {
+            await forwardContactEmail(formData);
+            toast.success("Message sent successfully");
+            form.reset();
+        } catch {
+            toast.error("Failed to send message. Please try again.");
+        }
+    };
+
     return (
-        <Card className="w-full !bg-theme-teal">
+        <Card className="w-full !bg-theme-teal py-1">
             <CardContent>
-                <form action={forwardContactEmail} className={`${afacad.className} space-y-4 text-black`}>
+                <form action={submitWithValidation} className={`${afacad.className} text-black`}>
                     <div>
                         <Controller
                             name="subject"
@@ -117,13 +132,13 @@ export default function ContactForm() {
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
                                     <FieldLabel htmlFor="cf-message">Message</FieldLabel>
-                                    <InputGroup>
+                                    <InputGroup className='rounded-xl'>
                                         <InputGroupTextarea
                                             {...field}
                                             id="cf-message"
                                             placeholder="Message"
                                             rows={5}
-                                            className='bg-white text-black'
+                                            className='bg-white text-black rounded-xl'
                                         />
                                     </InputGroup>
                                     {fieldState.invalid && (
@@ -132,7 +147,7 @@ export default function ContactForm() {
                                 </Field>
                             )}
                         />
-                        <Button type="submit" className="mt-5 bg-theme-green text-black">
+                        <Button type="submit" className="my-2 border-2 bg-[#C9D8C7] text-black active:bg-white active:text-[#6ea9ad] active:border-2 active:border-[#6ea9ad] hover:bg-[#6ea9ad] hover:text-white">
                             Submit
                         </Button>
                     </div>

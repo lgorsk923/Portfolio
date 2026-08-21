@@ -172,7 +172,7 @@ export default function Page() {
           <Link href='/pages/app-dev' className="text-center py-2 [word-spacing:-0.3em] hover:underline">
             App Dev
           </Link>
-          <Link href='/pages/private-voice' className="text-center  py-2 hover:underline ">
+          <Link href='/pages/performance' className="text-center  py-2 hover:underline ">
             Performance
           </Link>
           <Link href='/pages/gaffigan-voice-studio' className="text-center py-2 hover:underline">

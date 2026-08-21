@@ -42,7 +42,7 @@ export function NavbarExpanded() {
                     </SidebarMenuItem>
                     <SidebarMenuItem>
                         <SidebarMenuButton asChild isActive>
-                            <Link href="/pages/private-voice/" className='[word-spacing:-0.3em] lg:text-lg'>
+                            <Link href="/pages/gaffigan-voice-studio/" className='[word-spacing:-0.3em] lg:text-lg'>
                                 Private Voice Instruction
                             </Link>
                         </SidebarMenuButton>
