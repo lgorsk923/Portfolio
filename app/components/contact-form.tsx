@@ -14,7 +14,7 @@ import { forwardContactEmail } from "../../lib/send-contact-email";
 
 
 export const formSchema = z.object({
-    subject: z.string().optional(),
+    subject: z.string().optional().or(z.literal("")),
     name: z.string().min(1, { message: "Name is required" }),
     email: z.string().min(1, { message: "Email is required" }).email({ message: "Invalid email address" }),
     message: z.string().min(1, { message: "Message is required" }).max(1000, { message: "Message must be less than 1000 characters" })
@@ -41,7 +41,9 @@ export default function ContactForm() {
             formData.append("email", data.email);
             formData.append("message", data.message);
 
+            console.log("Submitting form data")
             const result = await forwardContactEmail(formData);
+            console.log("Result from forwardContactEmail:", result);
 
             if (result?.success) {
                 toast.success("Message sent successfully");
@@ -54,10 +56,15 @@ export default function ContactForm() {
         }
     };
 
+    const onInvalid = (errors: any) => {
+        console.log("Zod validation failed:", errors);
+        toast.error("Please fix the errors in the form before submitting.");
+    };
+
     return (
         <Card className="w-full !bg-theme-teal py-1">
             <CardContent>
-                <form onSubmit={form.handleSubmit(submitWithValidation)} className={`${afacad.className} text-black`}>
+                <form onSubmit={form.handleSubmit(submitWithValidation, onInvalid)} className={`${afacad.className} text-black`}>
                     <div>
                         <Controller
                             name="subject"
@@ -73,7 +80,7 @@ export default function ContactForm() {
                                         className='bg-white text-black'
                                     />
                                     {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
+                                        <FieldError>{fieldState.error?.message}</FieldError>
                                     )}
                                 </Field>
                             )}
@@ -92,7 +99,7 @@ export default function ContactForm() {
                                         className='bg-white text-black'
                                     />
                                     {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
+                                        <FieldError>{fieldState.error?.message}</FieldError>
                                     )}
                                 </Field>
                             )}
@@ -111,7 +118,7 @@ export default function ContactForm() {
                                         className='bg-white text-black'
                                     />
                                     {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
+                                        <FieldError>{fieldState.error?.message}</FieldError>
                                     )}
                                 </Field>
                             )}
@@ -132,7 +139,7 @@ export default function ContactForm() {
                                         />
                                     </InputGroup>
                                     {fieldState.invalid && (
-                                        <FieldError errors={[fieldState.error]} />
+                                        <FieldError>{fieldState.error?.message}</FieldError>
                                     )}
                                 </Field>
                             )}
