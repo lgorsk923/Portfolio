@@ -6,27 +6,12 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { afacad } from "../fonts";
 import { Button } from "@/components/ui/button";
-import {
-    Card,
-    CardContent,
-} from "@/components/ui/card";
-import {
-    Field,
-    FieldError,
-    FieldLabel
-} from "@/components/ui/field";
+import { Card, CardContent } from "@/components/ui/card";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import {
-    InputGroup, InputGroupTextarea,
-} from "@/components/ui/input-group";
+import { InputGroup, InputGroupTextarea } from "@/components/ui/input-group";
 import { forwardContactEmail } from "../../lib/send-contact-email";
 
-export interface contactFormData {
-    subject?: string;
-    name: string;
-    email: string;
-    message: string;
-}
 
 export const formSchema = z.object({
     subject: z.string().optional(),
@@ -35,9 +20,10 @@ export const formSchema = z.object({
     message: z.string().min(1, { message: "Message is required" }).max(1000, { message: "Message must be less than 1000 characters" })
 });
 
-export default function ContactForm() {
+export type ContactFormData = z.infer<typeof formSchema>;
 
-    const form = useForm<z.infer<typeof formSchema>>({
+export default function ContactForm() {
+    const form = useForm<ContactFormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             subject: "",
@@ -47,25 +33,31 @@ export default function ContactForm() {
         }
     });
 
-    const submitWithValidation = async (formData: FormData) => {
-        const isValid = await form.trigger();
-        if (!isValid) {
-            return;
-        }
-
+    const submitWithValidation = async (data: ContactFormData) => {
         try {
-            await forwardContactEmail(formData);
-            toast.success("Message sent successfully");
-            form.reset();
+            const formData = new FormData();
+            formData.append("subject", data.subject || "");
+            formData.append("name", data.name);
+            formData.append("email", data.email);
+            formData.append("message", data.message);
+
+            const result = await forwardContactEmail(formData);
+
+            if (result?.success) {
+                toast.success("Message sent successfully");
+                form.reset();
+            } else {
+                toast.error(typeof result?.error === "string" ? result.error : "Failed to send message. Please try again.");
+            }
         } catch {
-            toast.error("Failed to send message. Please try again.");
+            toast.error("An unexpected error occurred. Please try again.");
         }
     };
 
     return (
         <Card className="w-full !bg-theme-teal py-1">
             <CardContent>
-                <form action={submitWithValidation} className={`${afacad.className} text-black`}>
+                <form onSubmit={form.handleSubmit(submitWithValidation)} className={`${afacad.className} text-black`}>
                     <div>
                         <Controller
                             name="subject"
