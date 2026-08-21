@@ -3,11 +3,16 @@
 export async function forwardContactEmail(formData: FormData) {
 
     const url = 'https://comms.twilio.com/v1/Emails';
+
+    const sid = process.env.TWILIO_ACCOUNT_SID;
+    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const authString = Buffer.from(`${sid}:${authToken}`).toString('base64');
+
     const options = {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
-            authorization: 'Basic QUNhMDE3ODIxNWU0ODUxZGY0MzNlN2Y5NTA4ZDQ3MGViYzphMjA0NDQ0ZThiNDY2NzQ2NDc2ZmU5MWI5Mjc0MmZjZg=='
+            authorization: `Basic ${authString}`
         },
         body: JSON.stringify({
             "from": { "address": "contact@app.callforward.pro", "name": "Contact" },
