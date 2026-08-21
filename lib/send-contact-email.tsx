@@ -6,6 +6,11 @@ export async function forwardContactEmail(formData: FormData) {
 
     const sid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+    if (!sid || !authToken) {
+        return { success: false, error: "Missing Twilio credentials" };
+    }
+
     const authString = Buffer.from(`${sid}:${authToken}`).toString('base64');
 
     const options = {
@@ -28,8 +33,12 @@ export async function forwardContactEmail(formData: FormData) {
     try {
         const response = await fetch(url, options);
         const data = await response.json();
-        console.log(data);
-    } catch (error) {
+        if (!response.ok) {
+            return { success: false, error: data };
+        }
+        return { success: true, data };
+    } catch (error: any) {
         console.error(error);
+        return { success: false, error: error.message || "An error occurred while sending the email." };
     }
 }
