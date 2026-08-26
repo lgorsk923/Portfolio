@@ -153,3 +153,15 @@ body {
 .theme-purple{
   background-color: #4B0082;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-on-scroll {
+  animation: scrollFadeIn linear forwards;
+  animation-timeline: view();
+  /* Starts fading in when the element enters the bottom of the screen, completes by 40% into view */
+  animation-range: entry 0% cover 40%;
+}

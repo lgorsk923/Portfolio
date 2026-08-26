@@ -71,7 +71,7 @@ function RoleDescription({
     <div
       ref={onPanelRef}
       className={`relative mt-3 mb-5 pb-2 bg-[#C9D8C7] mx-2 px-2 w-15/17 flex flex-col ${interactiveClasses} ${className}
-    md:mx-5 md:w-5/7 md:px-5 md:pt-2 md:rounded-lg
+    md:mx-5 md:w-5/7 md:px-5 md:pt-2 rounded-lg
     lg:mx-15 lg:my-10 lg:max-w-4/7 xl:my-6 xl:pb-1`}
     >
       <h1 className='text-base font-bold pt-2
@@ -166,22 +166,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className='pt-2 px-3 bg-white grid grid-cols-7 gap-1'>
-      <div className='col-span-full'>
-        <div className="col-span-full grid grid-cols-3 gap-3 xl:text-xl">
-          <Link href='/pages/app-dev' className="text-center py-2 [word-spacing:-0.3em] hover:underline">
-            App Dev
-          </Link>
-          <Link href='/pages/performance' className="text-center  py-2 hover:underline ">
-            Performance
-          </Link>
-          <Link href='/pages/gaffigan-voice-studio' className="text-center py-2 hover:underline">
-            Coaching
-          </Link>
-
-        </div>
-
-      </div>
+    <div className='flex-1 flex flex-col min-h-full lg:items-center pt-2 px-3 bg-white grid grid-cols-7 gap-1'>
       <div className='block col-span-full xl:w-6/7 xl:mx-auto xl:mt-1 lg:mb-7 xl:mb-10'>
         {/* picture and contact info */}
         <div className='md:float-left md:w-2/7 md:mr-3 xl:w-1/4'>

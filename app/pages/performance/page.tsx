@@ -20,10 +20,24 @@ export default function Page() {
                     md:w-4/5 md:mx-auto md:my-7 lg:w-3/5 xl:w-3/5 xl:my-12'>
                         <div className={` ${afacad.className} py-4 px-5 md:px-9 md:py-7 lg:px-12 lg:py-9 xl:px-16 xl:py-12`}>
                             <p className='w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl'>
-                                Laura has had the privilege and honor of performing in a variety of settings. Most recently she has performed in a number of productions at the Memorial Opera House in Valparaiso, IN.
+                                Laura has had the privilege of performing in a variety of settings. Most recently she has performed in a number of productions at the Memorial Opera House in Valparaiso, IN.
                             </p>
                             <p className='w-full pt-4 text-base leading-7 text-black dark:text-zinc-400 md:text-lg md:pt-8 xl:text-xl xl:pt-12'>
                                 Her favorite roles to date include: Mary Poppins in Mary Poppins, Betty Haynes in White Christmas, and Celia in Godspell.
+                            </p>
+                            <p className='pt-8 w-full text-base leading-7 text-black dark:text-zinc-400 md:text-lg xl:text-xl'>
+                                Additionally Laura has performed and directed in a number of cabaret settings covering a wide variety of genres. She has experience making quality rehearsal tracks, and has worked as a section leader for a number of ensembles.
+                            </p>
+                        </div>
+                    </div>
+                    <div className='bg-[#C9D8C7] rounded-lg my-4 mx-5
+                    md:mx-auto lg:w-1/4'>
+                        <div className={` ${afacad.className} text-center`}>
+                            <h1 className='p-4 text-3xl font-bold leading-7 text-black dark:text-zinc-400 xl:pt-12'>
+                                COMING SOON!!!
+                            </h1>
+                            <p className='p-4'>
+                                Stay tuned for repertoire excerpts!
                             </p>
                         </div>
                     </div>
