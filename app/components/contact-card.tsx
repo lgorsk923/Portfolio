@@ -12,7 +12,7 @@ export default function ContentCard() {
                 />
 
             </div>
-            <div className='flex-1 ps-2 pe-1 content-center bg-[#6EA9AD] text-[#F5F5F5]
+            <div className='flex-1 ps-2 pe-1 content-center bg-primary text-background
                   md:px-3 md:pt-2 md:pb-4
                   xl:px-6 xl:pt-4 xl:pb-6'>
                 <h1 className='underline md:text-lg xl:text-xl'>Contact Information</h1>

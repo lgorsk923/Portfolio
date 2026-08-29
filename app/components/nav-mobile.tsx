@@ -43,7 +43,7 @@ export function NavbarExpanded() {
                     <SidebarMenuItem>
                         <SidebarMenuButton asChild isActive>
                             <Link href="/pages/gaffigan-voice-studio/" className='[word-spacing:-0.3em] lg:text-lg'>
-                                Private Voice Instruction
+                                Gaffigan Voice Studio
                             </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -84,7 +84,7 @@ export function Nav({ children, className }: { children: React.ReactNode, classN
 
                     {/* Top Purple Header */}
                     <div className="flex border-b-2 border-[#4B0082] relative md:min-h-[6rem] py-6">
-                        <SidebarTrigger className='md:hidden px-8 justify-center z-10 hover:bg-transparent active:bg-transparent aria-expanded:bg-transparent focus-visible:ring-0 focus-visible:border-transparent shadow-none md:px-14' />
+                        <SidebarTrigger className='lg:hidden px-8 justify-center z-10 hover:bg-transparent active:bg-transparent aria-expanded:bg-transparent focus-visible:ring-0 focus-visible:border-transparent shadow-none md:px-14' />
                         <div className='absolute inset-0 flex items-center justify-center pointer-events-none z-20 px-16'>
                             <Link href="/" className='pointer-events-auto max-w-full inline-block'>
                                 <h1 className={`${jomolhari.className} text-2xl font-bold text-[#F5F5F5] whitespace-nowrap overflow-hidden text-ellipsis leading-[1.5] md:text-3xl lg:text-4xl xl:text-5xl`}>
@@ -95,16 +95,34 @@ export function Nav({ children, className }: { children: React.ReactNode, classN
                     </div>
 
                     {/* Secondary Navigation Bar (Sits right below it natively) */}
-                    <div className='hidden md:block bg-[#F5F5F5] border-b-5 border-b-solid border-[#C9D8C7] py-2'>
-                        <div className="grid grid-cols-3 gap-3 xl:text-xl">
-                            <Link href='/pages/app-dev' className="text-center lg:w-2/5 md:w-1/2 justify-self-center my-2 rounded-full bg-[#6EA9AD] text-white py-2 [word-spacing:-0.3em] shadow-md hover:bg-[#F5F5F5] hover:text-black hover:border hover:border-[#6EA9AD] hover:shadow-md active:shadow-none active:border-3">
+                    <div className='hidden lg:block bg-background border-b-5 border-b-solid border-[#C9D8C7] py-2'>
+                        <div className="grid grid-cols-5 gap-3">
+                            <Link href='/' className="nav-button bg-primary text-white 
+                            hover:text-primary hover:border-1 hover:border-solid hover:border-primary
+                            active:text-primary active:border-2 active:border-solid active:border-primary"
+                            >
+                                Home
+                            </Link>
+                            <Link href='/pages/app-dev' className="nav-button bg-primary text-white 
+                            hover:text-primary hover:border-1 hover:border-solid hover:border-primary
+                            active:text-primary active:border-2 active:border-solid active:border-primary"
+                            >
                                 App Development
                             </Link>
-                            <Link href='/pages/gaffigan-voice-studio' className="text-center lg:w-1/2 md:w-full justify-self-center my-2 rounded-full bg-[#6EA9AD] text-white py-2 shadow-md hover:bg-[#F5F5F5] hover:text-black hover:border hover:border-[#6EA9AD] hover:shadow-md active:shadow-none active:border-3">
+                            <Link href='/pages/gaffigan-voice-studio' className="nav-button bg-primary text-white 
+                            hover:text-primary hover:border-1 hover:border-solid hover:border-primary
+                            active:text-primary active:border-2 active:border-solid active:border-primary"
+                            >
                                 Gaffigan Voice Studio
                             </Link>
-                            <Link href='/pages/performance' className="text-center lg:w-1/3 md:w-1/2 justify-self-center my-2 rounded-full bg-[#6EA9AD] text-white py-2 shadow-md hover:bg-[#F5F5F5] hover:text-black hover:border hover:border-[#6EA9AD] hover:shadow-md active:shadow-none active:border-3">
+                            <Link href='/pages/performance' className="nav-button bg-primary text-white
+                            hover:text-primary hover:border-1 hover:border-solid hover:border-primary
+                            active:text-primary active:border-2 active:border-solid active:border-primary"
+                            >
                                 Performance
+                            </Link>
+                            <Link href='/pages/contact' className="nav-button font-bold bg-secondary text-white hover:text-secondary hover:border-1 hover:border-solid hover:border-secondary">
+                                Contact Laura
                             </Link>
 
                         </div>
@@ -114,6 +132,6 @@ export function Nav({ children, className }: { children: React.ReactNode, classN
                 {/* Page Content scrolls underneath */}
                 {children}
             </main>
-        </SidebarProvider>
+        </SidebarProvider >
     )
 }

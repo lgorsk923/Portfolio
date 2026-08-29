@@ -23,7 +23,7 @@ export default function Page() {
                                     Laura has lived and taught in Northwest Indiana for the last 12 years. Originally from the northern suburbs of Chicago, she is a classically trained graduate of Butler University where she received a Bachelor of Music in Music Education.
                                 </p>
                                 <p className=' w-full pt-2 text-base leading-7 text-black dark:text-zinc-400 md:text-lg md:pt-8 xl:text-xl xl:pt-8'>
-                                    Previously she taught general music and choir in Hebron, Merrillville, and Chesterton. While she stepped away from the formal classroom in 2022, she has continued to teach private voice lessons for people of all ages in the area.
+                                    Previously she taught general music and choir in Hebron, Merrillville, and Chesterton for students ranging from elementary to high school. While she stepped away from the formal classroom in 2022, she has continued to teach private voice lessons for people of all ages in the area.
                                 </p>
                                 <p className=' w-full pt-2 text-base leading-7 text-black dark:text-zinc-400 md:text-lg md:pt-8 xl:text-xl xl:pt-8'>
                                     She has experience vocal directing a variety of productions in NWI and has served as one of the Music Directors for the local chapter of the Penguin Project, a theatre program that provides performance opportunities with mentor support for artists with disabilities, for the last four years.
